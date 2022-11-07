@@ -6,7 +6,7 @@ Demo environment, using k3d and ArgoCD, to deploy Argo Workflows and create samp
 
 ```bash
 # Clone the repo
-git clone https://github.com/k203007/argo-workflows-demo.git && cd "$(basename "$_" .git)"
+git clone https://github.com/k203007/argo-workflow-demo.git && cd "$(basename "$_" .git)"
 ```
 
 ```bash

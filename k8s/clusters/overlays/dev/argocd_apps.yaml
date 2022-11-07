@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: k8s/apps/argo_workflows/base
-    repoURL: https://github.com/k203007/argo-workflows-demo
+    repoURL: https://github.com/k203007/argo-workflow-demo
     targetRevision: HEAD
   syncPolicy:
     automated:

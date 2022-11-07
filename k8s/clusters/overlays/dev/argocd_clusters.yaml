@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/k203007/argo-workflows-demo"
+    repoURL: "https://github.com/k203007/argo-workflow-demo"
     path: k8s/clusters/overlays/dev
     targetRevision: HEAD
   destination:
