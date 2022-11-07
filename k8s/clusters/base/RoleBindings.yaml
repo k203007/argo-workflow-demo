@@ -1,0 +1,14 @@
+---
+# Role to apply ClusterRole permissions on argo namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argo-rb-01
+  namespace: argo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: api-resources-01
+subjects:
+  - kind: ServiceAccount
+    name: argo-sa-01

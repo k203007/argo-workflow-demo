@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    env: dev
+  name: argo-workflows
+  namespace: argocd
+spec:
+  destination:
+    namespace: argo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8s/apps/argo_workflows/base
+    repoURL: https://github.com/k203007/argo-workflows-demo
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s

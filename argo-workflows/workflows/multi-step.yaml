@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: busybox-commands-
+spec:
+  entrypoint: busybox-commands
+
+  # This spec contains two templates: hello-hello-hello and whalesay
+  templates:
+    - name: busybox-commands
+      # Instead of just running a container
+      # This template has a sequence of steps
+      steps:
+        #  Step 1
+        - - name: get-date # Get date is run before the following steps
+            template: busybox
+            arguments:
+              parameters:
+                - name: command
+                  value: "date"
+        #  Step 2
+        - - name: print-file-size # Print file size => run after previous step
+            template: busybox
+            arguments:
+              parameters:
+                - name: command
+                  value: "df"
+          #  Step 3
+          - name: print-system-information # Print system information => run in parallel with previous step
+            template: busybox
+            arguments:
+              parameters:
+                - name: command
+                  value: "uname"
+
+    # This is the same template as from the previous example
+    - name: busybox
+      inputs:
+        parameters:
+          - name: command
+      container:
+        image: docker.io/busybox:1.35.0
+        command: ["{{inputs.parameters.command}}"]

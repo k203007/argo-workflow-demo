@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: k8s-example-
+spec:
+  entrypoint: k8s-get-ns
+  serviceAccountName: dev-argo-sa-01
+
+  templates:
+    - name: k8s-get-ns
+      resource:
+        action: get
+        manifest: |
+          apiVersion: v1
+          kind: Service 
+          metadata:
+            name: argo-server
+            namespace: argo

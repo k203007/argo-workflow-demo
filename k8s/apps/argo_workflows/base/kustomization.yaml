@@ -1,0 +1,12 @@
+resources:
+  - namespace.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-workflows/v3.2.6/manifests/quick-start-minimal.yaml
+
+patchesStrategicMerge:
+  - workflow-configmap.yaml
+
+images:
+  - name: quay.io/argoproj/argocli
+    newTag: v3.2.6
+
+namespace: argo
