@@ -10,7 +10,7 @@ spec:
   arguments:
     parameters:
       - name: message
-        value: Up And Running!
+        value: Hallo ITI-CS!
 
   templates:
     - name: whalesay
